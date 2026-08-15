@@ -1,0 +1,37 @@
+<root>
+	<!--
+	= log =
+	Used to specify types of logging which should occur. Each level includes all message types of
+	previous levels:
+	0)		MINIMUM (Critical, Errors)
+	1)		MORE	(Warning)
+	2)		EXTRA	(Informational)
+	3)		ALL		(Debug)
+
+	= network =
+	Only one may be specified. Sets the network address space in the form of an address with subnet
+	mask, and the sever IP (server, meaning the DHCP server: THIS computer).
+
+	param:
+	  address IP/SUBNET-MASK (e.g.: 192.168.0.0/24)
+	  server: IP (e.g.: 192.168.0.1)
+
+	= dynamic =
+	Multiple may be specified. Sets a range of address which may be leased to clients. The range is
+	inclusive on both ends. The start and ends values MUST be valid values which fit within the
+	subnet.
+
+	param:
+	  start: First address available for use
+	  end: Last address available for use.
+
+	= static =
+	Multiple may be specified. Sets a specific MAC->IP association. Must not be part of a dynamic
+	block.
+	-->
+	<log>1</log>
+
+	<network address="192.168.0.0/24" server="192.168.0.1" />
+	<dynamic start="100" end="255" />
+	<static mac="00:01:02:03:04:05" ip="192.168.0.99" />
+</root>
