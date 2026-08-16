@@ -14,6 +14,7 @@ def main():
 	""" Program entry. Returns program result code to OS. """
 	if Configuration.setup() is False: return os.EX_CONFIG
 	if (log_lvl := Configuration.get('./log', first_only = True)) is None:
+		LOGGER.error('Unable to determine default log-level. Using WARNING.')
 		LOGGER.setlevel(logging.WARNING)
 	match log_lvl:
 		case 0: LOGGER.setlevel(logging.ERROR)
